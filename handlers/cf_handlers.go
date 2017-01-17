@@ -33,6 +33,7 @@ func WriteJSONResponse(w http.ResponseWriter, statusCode int, jsonObj interface{
 	}
 	w.Header().Set("Content-Length", strconv.Itoa(len(jsonBytes)))
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Connection", "close")
 	w.WriteHeader(statusCode)
 	w.Write(jsonBytes)
 }
